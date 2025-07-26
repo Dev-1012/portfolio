@@ -567,7 +567,7 @@ body.dark-theme .small-text {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 350px) {
     .content-card {
         padding: 25px 15px;
     }
@@ -594,12 +594,13 @@ body.dark-theme .small-text {
     .mascot-top img {
         height: 30px;
     }
-    .celestial-body img {
+    .celestial-body img,#moon-rise,#sun-rise {
         width: 60px;
         height: 60px;
     }
+
     @keyframes riseAndFade {
-        80% { bottom: calc(100vh - 150px); } /* Adjust rise height for smaller screens */
+        80% { bottom: calc(100vh - 150px); } 
         100% { bottom: calc(100vh - 180px); }
     }
 }
