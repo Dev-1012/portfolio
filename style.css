@@ -1,0 +1,605 @@
+/* Universal Styles & Base Reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    /* Light Theme Colors */
+    --background-light: #F0F8FF; /* Alice Blue - very light powder blue */
+    --card-background-light: #FFFFFF;
+    --text-color-light: #333333;
+    --highlight-color-light: #FF8C00; /* Dark Orange for name highlight */
+    --border-color-light: #E0E0E0;
+    --shadow-color-light: rgba(0, 0, 0, 0.1);
+    --top-bar-bg-light: #ADD8E6; /* Light Blue */
+    --current-view-bar-bg-light: #B0E0E6; /* Powder Blue */
+    --footer-bg-light: #ADD8E6; /* Light Blue */
+    --icon-hover-bg-light: #E6F7FF; /* Lighter blue on hover */
+    --icon-border-light: #B0E0E6; /* Powder Blue */
+
+    /* Dark Theme Colors */
+    --background-dark: #1A202C; /* Darker blue-grey */
+    --card-background-dark: #2D3748; /* Even darker blue-grey */
+    --text-color-dark: #F7FAFC;
+    --highlight-color-dark: #FFA500; /* Orange */
+    --border-color-dark: #4A5568;
+    --shadow-color-dark: rgba(0, 0, 0, 0.3);
+    --top-bar-bg-dark: #2B6CB0; /* Darker Blue */
+    --current-view-bar-bg-dark: #3182CE; /* Medium Dark Blue */
+    --footer-bg-dark: #2B6CB0; /* Darker Blue */
+    --icon-hover-bg-dark: #3F51B5; /* Indigo */
+    --icon-border-dark: #3182CE; /* Medium Dark Blue */
+
+    /* Wave Colors (adjust as needed for dark theme if you want them to change) */
+    --wave-fill-1: rgba(173, 216, 230, 0.7); /* Powder Blue Light */
+    --wave-fill-2: rgba(135, 206, 250, 0.5); /* Sky Blue Medium */
+    --wave-fill-3: rgba(70, 130, 180, 0.3);   /* Steel Blue Dark */
+    --wave-fill-4: rgba(30, 144, 255, 0.1);   /* Dodger Blue Darker */
+
+    --wave-fill-1-dark: rgba(28, 40, 51, 0.7); /* Darker blue */
+    --wave-fill-2-dark: rgba(36, 50, 70, 0.5); /* Even darker blue */
+    --wave-fill-3-dark: rgba(45, 63, 89, 0.3);
+    --wave-fill-4-dark: rgba(56, 76, 105, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--background-light);
+    color: var(--text-color-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden; /* Prevent horizontal scroll from wave animation */
+}
+
+/* Dark Theme specific styles */
+body.dark-theme {
+    --background-light: var(--background-dark);
+    --card-background-light: var(--card-background-dark);
+    --text-color-light: var(--text-color-dark);
+    --highlight-color-light: var(--highlight-color-dark);
+    --border-color-light: var(--border-color-dark);
+    --shadow-color-light: var(--shadow-color-dark);
+    --top-bar-bg-light: var(--top-bar-bg-dark);
+    --current-view-bar-bg-light: var(--current-view-bar-bg-dark);
+    --footer-bg-light: var(--footer-bg-dark);
+    --icon-hover-bg-light: var(--icon-hover-bg-dark);
+    --icon-border-light: var(--icon-border-dark);
+
+    /* Update wave colors for dark theme */
+    .parallax use:nth-child(1) { fill: var(--wave-fill-1-dark); }
+    .parallax use:nth-child(2) { fill: var(--wave-fill-2-dark); }
+    .parallax use:nth-child(3) { fill: var(--wave-fill-3-dark); }
+    .parallax use:nth-child(4) { fill: var(--wave-fill-4-dark); }
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--top-bar-bg-light);
+    box-shadow: 0 2px 4px var(--shadow-color-light);
+    position: relative;
+    z-index: 100;
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--text-color-light);
+    transition: color 0.3s ease;
+    outline: none;
+}
+
+#themeToggle:hover {
+    color: var(--highlight-color-light);
+}
+
+.mascot-top img {
+    height: 40px; /* Adjust size of your top mascot */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.mascot-top img:active {
+    transform: scale(0.9);
+}
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1; /* Ensure content is above wave if wave overflows */
+}
+
+.current-view-bar {
+    width: min(90%, 700px);
+    background-color: var(--current-view-bar-bg-light);
+    color: var(--text-color-light);
+    padding: 10px 20px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 2px 5px var(--shadow-color-light);
+    margin-bottom: -5px; /* Overlap slightly with content card */
+    font-weight: 600;
+    text-align: left;
+    border: 1px solid var(--border-color-light);
+    border-bottom: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.content-card {
+    background-color: var(--card-background-light);
+    border: 1px solid var(--border-color-light);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 10px var(--shadow-color-light);
+    padding: 40px 30px;
+    text-align: center;
+    width: min(90%, 700px);
+    max-width: 800px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-card h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    color: var(--text-color-light);
+}
+
+.content-card h1 .highlight-name {
+    color: var(--highlight-color-light);
+    font-weight: 600;
+}
+
+.content-card p {
+    font-size: 1.2em;
+    color: var(--text-color-light);
+    margin-bottom: 40px;
+}
+
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Space between items */
+    margin-top: 30px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-weight: 600;
+    font-size: 1em;
+    transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    padding: 15px;
+    border: 2px solid var(--icon-border-light);
+    border-radius: 15px;
+    background-color: transparent;
+    width: 100px; /* Fixed width for consistency */
+    height: 100px; /* Fixed height for consistency */
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item img {
+    width: 60px; /* Adjust icon size */
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    filter: invert(0%) brightness(100%); /* Adjust for light mode icons if needed */
+    transition: filter 0.3s ease;
+}
+
+.dark-theme .nav-item img {
+    filter: invert(100%) brightness(100%); /* Invert icons for dark mode if they are dark outlines */
+}
+
+.nav-item i { /* For Font Awesome icons if used */
+    font-size: 3em;
+    margin-bottom: 8px;
+}
+
+.nav-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    color: var(--highlight-color-light);
+    background-color: var(--icon-hover-bg-light);
+    border-color: var(--highlight-color-light);
+    box-shadow: 0 6px 15px var(--shadow-color-light);
+}
+
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 15px; /* Adjust as needed */
+    right: 15px; /* Adjust as needed */
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text-color-light); /* Or a specific close button color */
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    z-index: 10; /* Ensure it's above other content within the card */
+    background-color: transparent; /* Ensure no background interferes */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.close-btn:hover {
+    color: var(--highlight-color-light); /* Highlight on hover */
+    transform: scale(1.1);
+}
+
+.close-btn:active {
+    transform: scale(0.9);
+}
+
+/* Content Sections Styling */
+.content-section {
+    position: relative; /* Crucial for positioning the absolute close-btn */
+    display: none; /* Hide all content sections by default */
+    width: 100%; /* Ensure they take full width of parent */
+    text-align: left; /* Adjust text alignment within sections */
+    animation: fadeIn 0.5s ease-out; /* Optional fade-in animation */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    padding: 20px; /* Add some padding inside each section */
+    padding-top: 40px; /* Add more padding at the top to make space for the close button */
+}
+
+.content-section.active {
+    display: block; /* Show only the active content section */
+}
+
+/* Optional Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Specific styling for content within sections (example) */
+.content-section h2 {
+    font-size: 2.2em;
+    color: var(--highlight-color-light);
+    margin-top: 0; /* Reset default top margin */
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--border-color-light);
+    padding-bottom: 10px;
+    display: inline-block; /* Make border-bottom fit content */
+}
+
+.content-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Skills Section Specifics */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.skill-category {
+    background-color: var(--background-light); /* Lighter background for categories */
+    border: 1px solid var(--border-color-light);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px var(--shadow-color-light);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-category h3 {
+    font-size: 1.4em;
+    color: var(--text-color-light);
+    margin-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color-light);
+    padding-bottom: 8px;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-category ul li {
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: var(--text-color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-level {
+    font-size: 0.9em;
+    color: var(--highlight-color-light);
+    font-weight: 600;
+}
+
+/* Project Section Specifics */
+.project-item {
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color-light);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px var(--shadow-color-light);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item h3 {
+    font-size: 1.6em;
+    color: var(--text-color-light);
+    margin-bottom: 10px;
+}
+
+.project-item p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.project-item a {
+    color: var(--highlight-color-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: text-decoration 0.2s ease;
+}
+
+.project-item a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Section Specifics */
+.contact-social-links {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-social-links a {
+    color: var(--text-color-light);
+    font-size: 2em;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.contact-social-links a:hover {
+    color: var(--highlight-color-light);
+}
+
+.small-text {
+    font-size: 0.85em;
+    color: #666; /* A bit lighter grey */
+    margin-top: 25px;
+}
+
+/* Dark theme specific adjustments for content inside sections */
+body.dark-theme .skill-category {
+    background-color: var(--card-background-dark);
+}
+
+body.dark-theme .project-item {
+    background-color: var(--card-background-dark);
+}
+
+body.dark-theme .small-text {
+    color: #b0b0b0; /* Lighter grey for dark mode */
+}
+
+/* Celestial Body (Moon/Sun) Animation */
+.celestial-body {
+    position: fixed; /* Fixed position so it floats above content */
+    bottom: -100px; /* Start below the viewport, outside the wave */
+    transform: translateX(-50%); /* Adjust for exact centering */
+    opacity: 0; /* Hidden by default */
+    pointer-events: none; /* Ensure it doesn't block clicks */
+    z-index: 9999; /* High z-index to be on top of everything */
+}
+
+.celestial-body img {
+    width: 80px; /* Adjust size of your moon/sun image */
+    height: 80px;
+    object-fit: contain;
+    
+}
+#moon-rise{
+    mix-blend-mode: multiply;
+    left: 70%; /* Center horizontally */
+}
+#sun-rise{
+    mix-blend-mode: multiply;
+    right: 70%;
+}
+/* Animations for rising and fading */
+@keyframes riseAndFade {
+    0% {
+        bottom: -100px; /* Start below the screen */
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+    }
+    10% {
+        opacity: 1; /* Fade in quickly */
+        transform: translateX(-50%) scale(1);
+    }
+    80% {
+        bottom: calc(100vh - 200px); /* Rise high up (adjust 200px as needed) */
+        opacity: 1;
+    }
+    100% {
+        bottom: calc(100vh - 250px); /* Slightly higher at end to complete fade */
+        opacity: 0; /* Fade out slowly */
+        transform: translateX(-50%) scale(1.2); /* Optional: slight scale out */
+    }
+}
+
+/* Apply animation */
+.celestial-body.animate {
+    animation: riseAndFade 1s ease-out forwards; /* 3 seconds duration, ease-out, stay at end state */
+}
+
+/* Wave Styling */
+.wave-container {
+    position: relative;
+    width: 100%;
+    height: 150px; /* Height of the wave section */
+    overflow: hidden;
+    margin-top: -50px; /* Overlap with content card for seamless transition */
+    z-index: 0; /* Behind the content, but ensures relative positioning for elements within */
+}
+
+.waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(180deg); /* Flip to make it bottom wave */
+}
+
+/* Animation */
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+    fill: var(--wave-fill-1);
+}
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+    fill: var(--wave-fill-2);
+}
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+    fill: var(--wave-fill-3);
+}
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+    fill: var(--wave-fill-4);
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: var(--footer-bg-light);
+    padding: 20px 0;
+    text-align: center;
+    color: var(--text-color-light);
+    box-shadow: 0 -2px 4px var(--shadow-color-light);
+    position: relative;
+    z-index: 100; /* Ensure footer is above everything */
+}
+
+.footer .social-links a {
+    color: var(--text-color-light);
+    font-size: 1.8em;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: var(--highlight-color-light);
+}
+
+.footer p {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content-card h1 {
+        font-size: 2em;
+    }
+    .content-card p {
+        font-size: 1em;
+    }
+    .main-nav {
+        gap: 20px;
+    }
+    .nav-item {
+        width: 80px;
+        height: 80px;
+        padding: 10px;
+    }
+    .nav-item img {
+        width: 45px;
+        height: 45px;
+    }
+    .nav-item i {
+        font-size: 2.5em;
+    }
+    .close-btn {
+        font-size: 1.2em;
+        top: 10px;
+        right: 10px;
+    }
+    .content-section {
+        padding-top: 30px;
+    }
+    .content-section h2 {
+        font-size: 1.8em;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr; /* Stack skills categories on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .content-card {
+        padding: 25px 15px;
+    }
+    .main-nav {
+        flex-direction: row;
+        gap: 15px;
+    }
+    .nav-item {
+        width: 70px;
+        height: 70px;
+        font-size: 0.8em;
+        padding: 8px;
+    }
+    .nav-item img {
+        width: 40px;
+        height: 40px;
+    }
+    .nav-item i {
+        font-size: 2em;
+    }
+    .top-bar {
+        padding: 10px 15px;
+    }
+    .mascot-top img {
+        height: 30px;
+    }
+    .celestial-body img {
+        width: 60px;
+        height: 60px;
+    }
+    @keyframes riseAndFade {
+        80% { bottom: calc(100vh - 150px); } /* Adjust rise height for smaller screens */
+        100% { bottom: calc(100vh - 180px); }
+    }
+}

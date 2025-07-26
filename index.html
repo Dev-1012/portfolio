@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Ahuja - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
+    <audio id="closeSound" src="sounds/close.mp3" preload="auto"></audio>
+    <audio id="lightModeSound" src="sounds/light_mode.mp3" preload="auto"></audio>
+    <audio id="darkModeSound" src="sounds/dark_mode.mp3" preload="auto"></audio>
+
+    <div id="moon-rise" class="celestial-body">
+        <img src="./img/moon.png" alt="Rising Moon">
+    </div>
+    <div id="sun-rise" class="celestial-body">
+        <img src="./img/sun.png" alt="Rising Sun">
+    </div>
+    <div class="top-bar">
+        <button id="themeToggle" aria-label="Toggle theme">
+            </button>
+        <div class="mascot-top">
+            <img src="images/your_top_mascot.png" alt="Your Top Mascot" onclick="playClickSound()">
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="current-view-bar">
+            <span id="currentView">Currently Viewing: Home</span>
+        </div>
+        <div class="content-card">
+            <div id="home-section" class="content-section active">
+                <h1>hi! i'm <span class="highlight-name">Dev Ahuja</span></h1>
+                <p>computer science student, developer</p>
+            </div>
+
+            <div id="about-section" class="content-section">
+                <span class="close-btn" data-target-section="about">&times;</span>
+                <h2>About Me</h2>
+                <p>Hello! I'm Dev Ahuja, a passionate computer science student with a strong interest in web development, machine learning, game development. I'm currently studying at Trent University.</p>
+                <p>.......................</p>
+                <p>I'm always eager to learn new technologies and collaborate on exciting projects. Feel free to connect with me!</p>
+            </div>
+
+            <div id="skills-section" class="content-section">
+                <span class="close-btn" data-target-section="skills">&times;</span>
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <ul>
+                            <li>Python <span class="skill-level">(Experienced)</span></li>
+                            <li>C# <span class="skill-level">(Experienced)</span></li>
+                            <li>JavaScript <span class="skill-level">(Intermediate)</span></li>
+                            <li>HTML/CSS <span class="skill-level">(Proficient)</span></li>
+                            </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools & Technologies</h3>
+                        <ul>
+                            <li>Excel <span class="skill-level">(Proficient)</span></li>
+                            <li>Microsoft Office Suite <span class="skill-level">(Proficient)</span></li>
+                            <li>Git/GitHub <span class="skill-level">(Intermediate)</span></li>
+                            <li>VS Code <span class="skill-level">(Proficient)</span></li>
+                            </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Concepts & Areas</h3>
+                        <ul>
+                            <li>Web Development</li>
+                            <li>Data Structures & Algorithms</li>
+                            <li>Object-Oriented Programming (OOP)</li>
+                            <li>Database Fundamentals</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projects-section" class="content-section">
+                <span class="close-btn" data-target-section="projects">&times;</span>
+                <h2>My Projects</h2>
+                <div class="project-item">
+                    <h3>Project Title 1: [e.g., Python Web Scraper]</h3>
+                    <p>A brief description of Project 1. What problem did it solve? What was your role?</p>
+                    <p><strong>Technologies Used:</strong> Python, BeautifulSoup, Requests</p>
+                    <a href="https://github.com/yourusername/project1" target="_blank">View on GitHub</a> | <a href="#" target="_blank">Live Demo (if any)</a>
+                </div>
+                <div class="project-item">
+                    <h3>Project Title 2: [e.g., C# Desktop App]</h3>
+                    <p>A brief description of Project 2. Highlight key features and your learning.</p>
+                    <p><strong>Technologies Used:</strong> C#, .NET Framework, SQL Server</p>
+                    <a href="https://github.com/yourusername/project2" target="_blank">View on GitHub</a>
+                </div>
+                </div>
+
+            <div id="blog-section" class="content-section">
+                <span class="close-btn" data-target-section="blog">&times;</span>
+                <h2>My Blog</h2>
+                <p>Welcome to my blog! Here I'll share my thoughts on computer science, coding tutorials, and personal projects. Stay tuned for updates!</p>
+                <p><em>(Content coming soon!)</em></p>
+            </div>
+
+            <div id="contact-section" class="content-section">
+                <span class="close-btn" data-target-section="contact">&times;</span>
+                <h2>Contact Me</h2>
+                <p>I'd love to connect! Feel free to reach out for collaborations, questions, or just a chat.</p>
+                <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                <p>You can also find me on my social media:</p>
+                <div class="contact-social-links">
+                    <a href="https://instagram.com/devahuja1012" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/in/dev-ahuja-7222072a3/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <p class="small-text">(Note: For a fully functional contact form, you'd need a backend service like Formspree or develop your own server-side logic.)</p>
+            </div>
+
+
+            <nav class="main-nav">
+                <a href="#" class="nav-item" data-section="home">
+                    <img src="images/icon_home.png" alt="Home Icon">
+                    <span>home</span>
+                </a>
+                <a href="#" class="nav-item" data-section="about">
+                    <img src="images/icon_about.png" alt="About Me Icon">
+                    <span>about</span>
+                </a>
+                <a href="#" class="nav-item" data-section="skills">
+                    <img src="images/icon_skills.png" alt="Skills Icon">
+                    <span>skills</span>
+                </a>
+                <a href="#" class="nav-item" data-section="projects">
+                    <img src="images/icon_projects.png" alt="Projects Icon">
+                    <span>projects</span>
+                </a>
+                <a href="#" class="nav-item" data-section="blog">
+                    <img src="images/icon_blog.png" alt="Blog Icon">
+                    <span>blog</span>
+                </a>
+                <a href="#" class="nav-item" data-section="contact">
+                    <img src="images/icon_contact.png" alt="Contact Icon">
+                    <span>contact</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <div class="wave-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(173,216,230,0.7)" /> <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(135,206,250,0.5)" /> <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(70,130,180,0.3)" />   <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(30,144,255,0.1)" />   </g>
+        </svg>
+    </div>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://github.com/Dev-1012" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/dev-ahuja-7222072a3/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com/devahuja1012" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; <span id="currentYear"></span> Dev Ahuja. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
