@@ -400,26 +400,24 @@ body.dark-theme .small-text {
 /* Celestial Body (Moon/Sun) Animation */
 .celestial-body {
     position: fixed; /* Fixed position so it floats above content */
-    bottom: -100px; /* Start below the viewport, outside the wave */
-    transform: translateX(-50%); /* Adjust for exact centering */
-    opacity: 0; /* Hidden by default */
+    bottom: -60px; /* Start below the viewport, outside the wave */    opacity: 0; /* Hidden by default */
     pointer-events: none; /* Ensure it doesn't block clicks */
     z-index: 9999; /* High z-index to be on top of everything */
 }
 
 .celestial-body img {
-    width: 80px; /* Adjust size of your moon/sun image */
+    width: 80px;
     height: 80px;
     object-fit: contain;
     
 }
 #moon-rise{
-    mix-blend-mode: multiply;
-    left: 70%; /* Center horizontally */
+    mix-blend-mode:multiply;
+    right: 70%; /* Center horizontally */
 }
 #sun-rise{
     mix-blend-mode: multiply;
-    right: 70%;
+    left: 70%;
 }
 /* Animations for rising and fading */
 @keyframes riseAndFade {
@@ -567,7 +565,7 @@ body.dark-theme .small-text {
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 475px) {
     .content-card {
         padding: 25px 15px;
     }
